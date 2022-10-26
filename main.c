@@ -1,23 +1,21 @@
 /**
-  ******************************************************************************
+  ****************************************************************************
   * @file    main.c
-  * @author  Mouadh Dahech
-  * @brief   How to develop structured code 
+  * @author  Saber Chaabane
+  * @brief   Macros 
   * @version V1.0.0
-  * @date    16-10-2022
+  * @date    26-10-2022
   *****************************************************************************/
 /* Includes ------------------------------------------------------------------*/
 
 /* Macros --------------------------------------------------------------------*/
-//#define SOM
-#define MUL
-#define INTEL
-//#define OTHERS
 
-
+#define INTEL 0  // Change this to 1 if the architecture is INTEL
+#define OPERATION(A,B) (INTEL)?A+B:A*B // If the arch is defined as INTEL, sum A and B otherwise multiply them
+#define MIN_MAX(A,B) (INTEL)?((A<B)?A:B):((A<B)?B:A) //If the arch is INTEL, return the min otherwise return the max
+#define X 5
+#define Y 4
 /* Private function prototypes -----------------------------------------------*/
-static int sum(int a, int b);
-static int mul(int a, int b);
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -28,27 +26,11 @@ static int mul(int a, int b);
   */
 int main(void)
 {
-#ifdef SOM
-  int SumResult = sum(1,2);
-#endif
-#ifdef MUL
-  int MulResult = mul(1,2);
-#endif
-  while (1)
+  int Operation_Result = OPERATION(X,Y);
+  int Comparison_Result = MIN_MAX(X,Y);
+  while(1)
   {
-   
   }
 }
-#ifdef SOM
-static int sum(int a, int b)
-{
-  return(a+b);
-}
-#endif
-#ifdef MUL
-static int mul(int a, int b)
-{
-  return(a*b);
-}
-#endif
+
 /**************************************END OF FILE**************************************/
